@@ -1,7 +1,8 @@
+from argparse import ArgumentParser
 from pprint import pprint
 from sys import argv
 
-from .. import get_features, get_headers, get_row_count, load_dataset
+from ... import get_features, get_headers, get_row_count, load_dataset
 
 
 def parse_args(*args):
@@ -11,22 +12,22 @@ def parse_args(*args):
     )
     args.add_argument("name", help="The name of the dataset")
     args.add_argument(
-        "--headers",
         "-h",
+        "--headers",
         action="store_true",
         default=False,
         help="Print datasets column names",
     )
     args.add_argument(
-        "--features",
         "-f",
+        "--features",
         action="store_true",
         default=False,
         help="Print datasets features",
     )
     args.add_argument(
-        "--len",
         "-l",
+        "--len",
         action="store_true",
         default=False,
         help="Print the number of rows",
