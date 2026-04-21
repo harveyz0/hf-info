@@ -14,7 +14,5 @@ dependencies = [
 
 
 [project.scripts]
-ingestor = "hfinfo.cmd.hfinfo:main"
+hfinfo = "hfinfo.cmd.hfinfo:main"
 
-[tool.uv.sources]
-obfuscator = { workspace = true }
