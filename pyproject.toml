@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hfinfo"
+version = "0.1.0"
+description = "Print dataset information"
+#readme = "README.org"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.5.0",
+]
+
+
+[project.scripts]
+ingestor = "hfinfo.cmd.hfinfo:main"
+
+[tool.uv.sources]
+obfuscator = { workspace = true }
