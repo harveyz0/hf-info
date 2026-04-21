@@ -12,7 +12,7 @@ def parse_args(*args):
     )
     args.add_argument("name", help="The name of the dataset")
     args.add_argument(
-        "-h",
+        "-e",
         "--headers",
         action="store_true",
         default=False,
