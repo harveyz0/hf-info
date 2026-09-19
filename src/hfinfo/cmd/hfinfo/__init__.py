@@ -32,17 +32,31 @@ def parse_args(*args):
         default=False,
         help="Print the number of rows",
     )
-    return args
+    args.add_argument(
+        "-a",
+        "--all",
+        action="store_true",
+        default=False,
+        help="Print all the info we can get",
+    )
+    args.add_argument(
+        "-d",
+        "--load-from-disk",
+        action="store_true",
+        default=False,
+        help="Use Hugging Faces load_from_disk method",
+    )
+    return args.parse_args()
 
 
 def hfinfo(*args):
     a = parse_args(*args)
-    hf = load_dataset(args.name)
-    if a.headers:
+    hf = load_dataset(a.name, a.load_from_disk)
+    if a.headers or a.all:
         pprint(get_headers(hf))
-    if a.features:
+    if a.features or a.all:
         pprint(get_features(hf))
-    if a.len:
+    if a.len or a.all:
         pprint(get_row_count(hf))
     return 0
 
