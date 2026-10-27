@@ -46,12 +46,19 @@ def parse_args(*args):
         default=False,
         help="Use Hugging Faces load_from_disk method",
     )
+    args.add_argument(
+        "-r",
+        "--stream",
+        action="store_true",
+        default=False,
+        help="Stream the dataset",
+    )
     return args.parse_args()
 
 
 def hfinfo(*args):
     a = parse_args(*args)
-    hf = load_dataset(a.name, a.load_from_disk)
+    hf = load_dataset(a.name, a.load_from_disk, streaming=a.stream)
     if a.headers or a.all:
         pprint(get_headers(hf))
     if a.features or a.all:

@@ -6,7 +6,7 @@ from datasets import load_from_disk
 
 
 def load_dataset(
-    path, use_load_from_disk=False, streaming=True, split=Split.TRAIN, **kwargs
+    path, use_load_from_disk=False, streaming=False, split=Split.TRAIN, **kwargs
 ) -> Union[DatasetDict, Dataset, IterableDatasetDict, IterableDataset]:
     if use_load_from_disk:
         ds = load_from_disk(path, **kwargs)
