@@ -25,3 +25,6 @@ def get_features(ds):
 
 def get_row_count(ds):
     return ds.num_rows
+
+def save_ds(ds, path):
+    return ds.to_parquet(path)

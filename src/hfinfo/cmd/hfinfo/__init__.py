@@ -2,7 +2,7 @@ from argparse import ArgumentParser
 from pprint import pprint
 from sys import argv
 
-from ... import get_features, get_headers, get_row_count, load_dataset
+from ... import get_features, get_headers, get_row_count, load_dataset, save_ds
 
 
 def parse_args(*args):
@@ -53,6 +53,7 @@ def parse_args(*args):
         default=False,
         help="Stream the dataset",
     )
+    args.add_argument("-p", "--to-parquet", action='store', default=None, help="Pass a path and we will call to_parquet on that dataset")
     return args.parse_args()
 
 
@@ -65,6 +66,8 @@ def hfinfo(*args):
         pprint(get_features(hf))
     if a.len or a.all:
         pprint(get_row_count(hf))
+    if a.to_parquet:
+        pprint(save_ds(hf, a.to_parquet))
     return 0
 
 
